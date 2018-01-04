@@ -77,8 +77,7 @@ def largest_prime_factor(n):
 
 def is_palindrome(n):
     digits = list(str(n))
-    reversed_digits = list(str(n))
-    reversed_digits.reverse()
+    reversed_digits = digits[::-1]
     if digits == reversed_digits:
         return True
     else:
@@ -111,17 +110,15 @@ def palindrome_product(digits):
 
 
 def get_prime_factors_list(n):
-    prime_factors_list = []
     factor = 1
     while factor <= n:
         if is_prime(factor) and n % factor == 0:
             while True:
-                prime_factors_list.append(factor)
+                yield factor
                 n /= factor
                 if not n % factor == 0:
                     break
         factor += 1
-    return prime_factors_list
 
 
 def lcm_of_first(limit):
@@ -139,8 +136,7 @@ def lcm_of_first(limit):
     i = 1
     while i <= limit:  # for each number up to max, create an ArrayList of prime factors
         occurrences = [0] * (max_prime + 1)
-        prime_factors = get_prime_factors_list(i)
-        for p in prime_factors:
+        for p in get_prime_factors_list(i):
             occurrences[p] += 1
         # get an array of the amount of each prime factor
         # e.g occurrences[5] will give the number of 5's in the prime factorisation
@@ -160,8 +156,18 @@ def lcm_of_first(limit):
     print("The LCM of the numbers from 1 to " + str(limit) + " is " + str(LCM))
     # problem5 - LCM of set of numbers from 1 to max
 
+
 # print(sum_even_fib_numbers(4000000))
 # sum_of_multiples(3, 5, 1000)
 # largest_prime_factor(600851475143)
 # palindrome_product(4)
-# lcm_of_first(20)
+lcm_of_first(20)
+
+# msg = "Hello world!"
+# file = open("/Users/rupesh.vekaria/project_euler_problems/test_file.txt", "w")
+# amount_written = file.write(msg)
+# print(amount_written)
+# file.close()
+# file = open("/Users/rupesh.vekaria/project_euler_problems/test_file.txt", "r")
+# print(file.read())
+# file.close()
