@@ -1,3 +1,5 @@
+import datetime
+
 def sum_of_multiples(m1, m2, max):
     multiples = []
     for i in range(max):
@@ -156,15 +158,51 @@ def lcm_of_first(limit):
     print("The LCM of the numbers from 1 to " + str(limit) + " is " + str(LCM))
     # problem5 - LCM of set of numbers from 1 to max
 
+def sum_of_squares(first_n):
+    sum = 0
+    for i in range(1, first_n+1):
+        sum += i * i
+    return sum
+    #returns the sum of the first n square numbers
+
+def square_of_sum(first_n):
+    sum = 0
+    for i in range(1, first_n+1):
+        sum += i
+    return sum * sum
+    #finds the sum of the first n numbers and returns the square of this total
+
+def square_of_sum_minus_sum_of_squares(first_n):
+    ans = square_of_sum(first_n) - sum_of_squares(first_n)
+    print("The difference between the sum of the squares and square of the sum of the first " + str(first_n) +
+          " natural numbers is " + str(ans))
+    # problem 6 - difference between the sum of squares and square of sum of first n natural numbers
+
+def square_of_sum_minus_sum_of_squares_efficient(n):
+    ans = (3*n**3 + 2*n**2 - 3*n - 2)*n/12
+    print("The difference between the sum of the squares and square of the sum of the first " + str(n) +
+          " natural numbers is " + str(ans))
+    # problem 6 - difference between the sum of squares and square of sum of first n natural numbers
+    # Use simplified formula - approximately 5 times faster than the brute force method
 
 # print(sum_even_fib_numbers(4000000))
 # sum_of_multiples(3, 5, 1000)
 # largest_prime_factor(600851475143)
 # palindrome_product(4)
-lcm_of_first(20)
+# lcm_of_first(20)
+
+# start_time = datetime.datetime.now()
+# square_of_sum_minus_sum_of_squares(100)
+# end_time = datetime.datetime.now()
+# print("Time taken: " + str(end_time - start_time))
+
+# start_time = datetime.datetime.now()
+# square_of_sum_minus_sum_of_squares_efficient(100)
+# end_time = datetime.datetime.now()
+# print("Time taken: " + str(end_time - start_time))
 
 # msg = "Hello world!"
-# file = open("/Users/rupesh.vekaria/project_euler_problems/test_file.txt", "w")
+# file = open("/Users/rupes.h.vekaria/project_euler_problems/test_file.txt", "w")
 # amount_written = file.write(msg)
 # print(amount_written)
 # file.close()
